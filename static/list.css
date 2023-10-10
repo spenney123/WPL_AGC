@@ -1,0 +1,55 @@
+thead {
+ background-color: #146EA6;
+ font-size: 100%;
+ text-align: justify;
+ text-align-last: center;
+ font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+   text-align: left;
+   font-family: Arial, Helvetica, sans-serif;
+ }
+
+
+a {
+ color: white;
+ font-size: 100%;
+}
+
+div {
+   margin-top: 10px;
+   margin-bottom: 10px;
+   margin-right: 10px;
+   margin-left: 10px;
+ }
+
+tr.even{
+       background-color: #E3F1FF;
+ }
+
+tr.odd{
+       background-color: #FFFFFF;
+}
+
+ row {
+   margin-top: 10px;
+   margin-bottom: 10px;
+   margin-right: 10px;
+   margin-left: 10px;
+   background-color: #f3f6f4;
+ }
+
+
+ body {
+   background-color: #f3f6f4;
+ }
+
+ #ActivityTitle {
+   margin-bottom: 10px;
+   margin-right: 10px;
+   margin-left: 10px;
+   }
+
+
+
