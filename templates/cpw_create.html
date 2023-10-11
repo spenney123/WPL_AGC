@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+  {% load static %}
+  {% block content %}
+
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+</head>
+
+  <body>
+
+  <link href="{% static 'create.css' %}" rel="stylesheet">
+
+  <h3>New CPW</h3>
+  <form id="createCPW" action="" method="post">{% csrf_token %} {{ form.as_p }}
+   <input type="submit" value="Save"/>
+  </form>
+
+  <script>
+
+    document.getElementById("id_one_off_purchase").addEventListener("change",contractLength);
+    document.getElementById("id_trust").addEventListener("change",divisionOptions);
+    document.getElementById("id_WPL_reference").addEventListener("change",reference);
+    document.getElementById("id_reference_number").addEventListener("change",reference);
+
+    document.getElementById("id_total_cpw_value").min = 25000
+
+    function contractLength(){
+      var oneoff = document.getElementById("id_one_off_purchase").value;
+      if (oneoff == 'Yes'){
+        document.getElementById("id_contract_term").min = 0
+        document.getElementById("id_contract_term").max = 0
+        document.getElementById("id_contract_term").value = 0
+      } else {
+        document.getElementById("id_contract_term").min = 1
+        document.getElementById("id_contract_term").max = 10000
+    }
+  }
+
+    function reference(){
+      var ref = document.getElementById("id_reference_number").value;
+          ref = "WPL" + "0" + ref
+          document.getElementById("id_WPL_reference").value = ref;
+
+    }
+
+
+
+    function divisionOptions(){
+      var x = document.getElementById("id_division");
+      var trust = document.getElementById("id_trust").value;
+
+      x.value = x[0]
+
+      for (let i = 0; i < 24; i++){
+        x[i].style.display = 'block'
+      }
+
+      if(trust == "HHFT"){
+        for (let i = 10; i < 24; i++){
+              x[i].style.display = 'none';
+            }
+        }
+      else if(trust == "UHS"){
+        for (let i = 0; i < 10; i++){
+              x[i].style.display = 'none';
+            }
+        for (let i = 20; i < 24; i++){
+              x[i].style.display = 'none';
+            }
+      }
+      else if(trust == "UEL"){
+        for (let i = 0; i < 20; i++){
+              x[i].style.display = 'none';
+            }
+        for (let i = 23; i < 24; i++){
+              x[i].style.display = 'none';
+            }
+      }
+      else if(trust == "HHCS"){
+        for (let i = 0; i < 23; i++){
+              x[i].style.display = 'none';
+            }
+      }
+    }
+
+
+
+  </script>
+  </body>
+
+  {% endblock content %}

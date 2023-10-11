@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}CPW Log{% endblock title %}
+{% block content %}
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    html,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
+    body {font-family: "Roboto", sans-serif; background-color: #f3f6f4;}
+  </style>
+</head>
+
+
+<div class="w3-twothird">
+      <div class="w3-container w3-card w3-white w3-margin-bottom w3-margin-top w3-margin-left">
+        <div class="w3-container">
+
+        <h2 <span class="w3-tag w3-teal w3-round">WPL0{{ cpw.reference_number}}</span></h2>
+        <h4 class="card-text">Trust: {{ cpw.trust}}</h4>
+        <!--<h4 class="card-text">{{ cpw.date_added_to_cpw}}</h4>-->
+        <h4 class="card-text">Project Title: {{ cpw.project_title}}</h4>
+        <h4 class="card-text">CPW Rationale: {{ cpw.cpw_rationale}}</h4>
+        <h4 class="card-text">Supplier: {{ cpw.supplier}}</h4>
+        <h4 class="card-text">Total CPW Values £ (excluding VAT): {{ cpw.total_cpw_value}}</h4>
+        <h4 class="card-text">Division: {{ cpw.division}}</h4>
+        <h4 class="card-text">Department: {{ cpw.department}}</h4>
+        <h4 class="card-text">Most Senior Approval Received by: {{ cpw.most_senior_approval_received_by}}</h4>
+        <!--<h4 class="card-text">{{ cpw.date_final_approval_received}}</h4>-->
+        <h4 class="card-text">One Off Purchase or Contract Available?: {{ cpw.one_off_purchase}}</h4>
+        <h4 class="card-text">Contract Term in Months (If 12 months or over please ass to the Contracts Register): {{ cpw.contract_term}}</h4>
+        <hr>
+        <a href="{% url 'cpw_list' %}" class="btn btn-primary btn-sm w3-margin-bottom">Back to CPW Log</a>
+        </div>
+
+
+
+{% endblock content %}

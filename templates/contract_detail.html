@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block title %}Contracts Log{% endblock title %}
+{% block content %}
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    html,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
+    body {font-family: "Roboto", sans-serif; background-color: #f3f6f4;}
+  </style>
+</head>
+
+
+
+
+<div class="w3-twothird">
+      <div class="w3-container w3-card w3-white w3-margin-bottom w3-margin-top w3-margin-left">
+        <div class="w3-container">
+
+      <h2 <span class="w3-tag w3-teal w3-round">WPL0{{ contracts.reference_number}}</span></h2>
+      <h4 class="card-text">Trust: {{ contracts.trust }}</h4>
+      <h4 class="card-text">WPL Category Area: {{ contracts.WPL_category_area }}</h4>
+      <h4 class="card-text">Sub-Category: {{ contracts.sub_category }}</h4>
+      <h4 class="card-text">Project Title: {{ contracts.project_title }}</h4>
+      <h4 class="card-text">Description of Services/Goods Provided: {{ contracts.description }}</h4>
+      <h4 class="card-text">Division: {{ contracts.division }}</h4>
+      <h4 class="card-text">Department: {{ contracts.department }}</h4>
+      <h4 class="card-text">Route to Market: {{ contracts.route_to_market }}</h4>
+      <h4 class="card-text">Agreement Type: {{ contracts.agreement_type }}</h4>
+      <h4 class="card-text">Contract - Handling of Personal Information: {{ contracts.personal_info }}</h4>
+      <h4 class="card-text">Estimated Contract Value (Ex VAT): {{ contracts.contract_value }}</h4>
+      <h4 class="card-text">Original Contract Term (Months): {{ contracts.contract_term }}</h4>
+      <h4 class="card-text">Contract Value Per Annum: {{ contracts.contract_val_pa }}</h4>
+      <h4 class="card-text">Supplier Name: {{ contracts.supplier }}</h4>
+      <h4 class="card-text">Contract Start Date: {{ contracts.contract_start }}</h4>
+      <h4 class="card-text">Contract End Date: {{ contracts.contract_end }}</h4>
+      <h4 class="card-text">Extension Option Available: {{ contracts.extension }}</h4>
+      <h4 class="card-text">Extension Option (Months): {{ contracts.extension_months }}</h4>
+      <h4 class="card-text">Notice to Terminate Required: {{ contracts.notice }}</h4>
+      <h4 class="card-text">Notice Period Required (Days): {{ contracts.notice_days }}</h4>
+      <h4 class="card-text">Contract Available: {{ contracts.contract_available }}</h4>
+      <h4 class="card-text">Indexation Clause: {{ contracts.indexation_clause }}</h4>
+      <h4 class="card-text">Notice Required By:</h4>
+      <h4 class="card-text">Days Until Contract End:</h4>
+      <h4 class="card-text">Contract Status:</h4>
+      <h4 class="card-text">WPL Category Ref:</h4>
+      <h4 class="card-text">Activity Ref & Trust:</h4>
+      <h4 class="card-text">WPL Lead:</h4>
+      <h4 class="card-text">Clinical/Non-Clinical:</h4>
+      <hr>
+      <a href="{% url 'contracts_list' %}" class="btn btn-primary btn-sm">Back to Contracts Register</a>
+    </div>
+
+{% endblock content %}

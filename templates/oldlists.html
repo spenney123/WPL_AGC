@@ -1,0 +1,151 @@
+<!-- old table code for lists before django tables 2 -->
+
+<!-- activity list table -->
+<table id="myTable" class="table">
+  <thead>
+    <tr>
+      <th scope="col">WPL Activity Reference</th>
+      <th style="width:150px" scope="col">WPL Lead</th>
+      <th style="width:300px" scope="col">Date Logged</th>
+      <th style="width:100px" scope="col">Trust(s)</th>
+      <th style="width:200px" scope="col">Project Title</th>
+      <th style="width:400px" scope="col">Project Type</th>
+      <th scope="col">Supplier</th>
+      <th scope="col">Entered By</th>
+    </tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tbody>
+    {% for activity in object_list %}
+    <tr>
+      <td><a href="{% url 'activity_detail' activity.pk %}" scope="row">WPL0{{ activity.reference_number }}</a></td>
+      <td>{{ activity.WPL_lead}}</td>
+      <td>{{ activity.date_logged }}</td>
+      <td>{{ activity.trust}}</td>
+      <td>{{ activity.project_title}}</td>
+      <td>{{ activity.project_type}}</td>
+      <td>{{ activity.supplier}}</td>
+      <td>{{ activity.entered_by}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<!-- CPW list table -->
+
+<table id="myTable" class="table">
+  <thead>
+    <tr>
+      <th scope="col">WPL Activity Reference</th>
+      <th style="width:80px" scope="col">Trust</th>
+      <th style="width:400px" scope="col">Date Added to CPW Log</th>
+      <th scope="col">Project Title</th>
+      <th scope="col">CPW Rationale</th>
+      <th scope="col">Supplier</th>
+      <th style="width:150px"scope="col">Total CPW Value £ (excluding VAT)</th>
+      <th style="width:200px" scope="col">Division</th>
+      <th style="width:200px"scope="col">Department</th>
+      <th style="width:200px" scope="col">Most Senior Approval Received by</th>
+      <th style="width:200px"scope="col">Date Final Approval Received</th>
+      <th style="width:150px"scope="col">One Off Purchase or Contract Available?</th>
+      <th style="width:500px" scope="col">Contract Term in Months (If 12 months or over please add to the Contracts Register)</th>
+    </tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tbody>
+    {% for cpw in object_list %}
+    <tr>
+      <td scope="row"><a href="{% url 'cpw_detail' cpw.pk %}">{{ cpw.WPL_reference}}</a></td>
+      <td>{{ cpw.trust}}</td>
+      <td>{{ cpw.date_added_to_cpw}}</td>
+      <td>{{ cpw.project_title}}</td>
+      <td>{{ cpw.cpw_rationale}}</td>
+      <td>{{ cpw.supplier}}</td>
+      <td>£ {{ cpw.total_cpw_value}}</td>
+      <td>{{ cpw.division}}</td>
+      <td>{{ cpw.department}}</td>
+      <td>{{ cpw.most_senior_approval_received_by}}</td>
+      <!--<td>{{ cpw.date_final_approval_received}}</td>-->
+      <td>{{ cpw.formatdate }}</td>
+      <td>{{ cpw.one_off_purchase}}</td>
+      <td>{{ cpw.contract_term}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<!-- old list for contracts -->
+
+<table id="myTable" class="table">
+  <thead>
+    <tr>
+      <th style="width=2000px" scope="col">WPL Activity Reference</th>
+      <th scope="col">Trust</th>
+      <th scope="col">WPL Category Area</th>
+      <th scope="col">Sub-Category</th>
+      <th scope="col">Project Title</th>
+      <th scope="col">Description of Services/Goods Provided</th>
+      <th scope="col">Division</th>
+      <th scope="col">Department</th>
+      <th scope="col">Route to Market</th>
+      <th scope="col">Agreement Type</th>
+      <th scope="col">Contract - Handling of Personal Information</th>
+      <th scope="col">Estimated Contract Value (Ex VAT)</th>
+      <th scope="col">Original Contract Term (Months)</th>
+      <th scope="col">Contract Value Per Annum</th>
+      <th scope="col">Supplier Name</th>
+      <th scope="col">Contract Start Date</th>
+      <th scope="col">Contract End Date</th>
+      <th scope="col">Extension Option Available</th>
+      <th scope="col">Extension Option (Months)</th>
+      <th scope="col">Notice to Terminate Required</th>
+      <th scope="col">Notice Period Required (Days)</th>
+      <th scope="col">Contract Available</th>
+      <th scope="col">Indexation Clause</th>
+      <th scope="col">Notice Required By</th>
+      <th scope="col">Days Until Contract End</th>
+      <th scope="col">Contract Status</th>
+      <th scope="col">WPL Category Ref</th>
+      <th scope="col">Activity Ref & Trust</th>
+      <th scope="col">WPL Lead</th>
+      <th scope="col">Clinical/Non-Clinical</th>
+    </tr>
+  </thead>
+  <tbody class="table-group-divider">
+  <tbody>
+    {% for contracts in object_list %}
+    <tr>
+      <td scope="row"><a href="{% url 'contract_detail' contracts.pk %}">{{ contracts.WPL_reference }}</a></td>
+      <td>{{ contracts.trust }}</td>
+      <td>{{ contracts.WPL_category_area }}</td>
+      <td>{{ contracts.sub_category }}</td>
+      <td>{{ contracts.project_title }}</td>
+      <td>{{ contracts.description }}</td>
+      <td>{{ contracts.division }}</td>
+      <td>{{ contracts.department }}</td>
+      <td>{{ contracts.route_to_market }}</td>
+      <td>{{ contracts.agreement_type }}</td>
+      <td>{{ contracts.personal_info }}</td>
+      <td>£ {{ contracts.contract_value }}</td>
+      <td>{{ contracts.contract_term }}</td>
+      <td>£ {{ contracts.contract_val_pa }}</td>
+      <td>{{ contracts.supplier }}</td>
+      <td>{{ contracts.contract_start }}</td>
+      <td>{{ contracts.contract_end }}</td>
+      <td>{{ contracts.extension }}</td>
+      <td>{{ contracts.extension_months }}</td>
+      <td>{{ contracts.notice }}</td>
+      <td>{{ contracts.notice_days }}</td>
+      <td>{{ contracts.contract_available }}</td>
+      <td>{{ contracts.indexation_clause }}</td>
+      <td>Notice Required By </td>
+      <td>Days Until Contract End</td>
+      <td>Contract Status</td>
+      <td>WPL Category Ref</td>
+      <td>Activity Ref & Trust</td>
+      <td>{{ contracts.WPL_lead }}</td>
+      <td> Clin/Non-Clin </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>

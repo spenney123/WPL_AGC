@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+</head>
+
+<body>
+
+  <link href="{% static 'create.css' %}" rel="stylesheet">
+
+  <h3>New Opportunity</h3>
+  <form id="createact" action="" method="post" >{% csrf_token %} {{ form.as_p }}
+   <input type="submit" value="Save"/>
+  </form>
+  <script>
+
+  document.getElementById("id_new_spend").addEventListener("change",CIP_calculation);
+  document.getElementById("id_FYE_CIP").addEventListener("change",CIP_calculation);
+  document.getElementById("id_trust").addEventListener("change",divisionOptions);
+  document.getElementById("id_wpl_engagement_status").addEventListener("change",FYImpacting);
+
+  function CIP_calculation(){
+     var prev_FY_spend = document.getElementById("id_previous_FY_spend").value;
+     var new_spend = document.getElementById("id_new_spend").value;
+     var cip = prev_FY_spend - new_spend;
+         document.getElementById("id_FYE_CIP").value = cip;
+
+   }
+
+
+  function divisionOptions(){
+    var x = document.getElementById("id_division");
+    var trust = document.getElementById("id_trust").value;
+
+        x.value = x[0]
+
+    for (let i = 0; i < 26; i++){
+      x[i].style.display = 'block'
+    }
+
+    if(trust == "HHFT"){
+      for (let i = 10; i < 26; i++){
+            x[i].style.display = 'none';
+          }
+      }
+    else {
+      for (let i = 0; i < 10; i++){
+            x[i].style.display = 'none';
+          }
+         }
+  }
+
+
+  function FYImpacting(){
+    var status = document.getElementById("id_wpl_engagement_status").value;
+    var x = document.getElementById("id_FY_impacting")
+
+    x.value = x[0]
+
+    for (let i = 0; i < 9; i++){
+      x[i].style.display = 'block'
+    }
+
+    if(status == "Opportunity Identified (Opportunity)"){
+      for (let i = 3; i < 9; i++){
+            x[i].style.display = 'none';
+          }
+      }
+    else {
+      for (let i = 0; i < 3; i++){
+            x[i].style.display = 'none';
+          }
+         }
+  }
+
+
+  </script>
+  </body>
+
+
+
+{% endblock content %}

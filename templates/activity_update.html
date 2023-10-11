@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+</head>
+
+<body>
+
+  <link href="{% static 'css/create.css' %}" rel="stylesheet">
+
+<h3>Edit Activity</h3>
+<form action="" method="post">{% csrf_token %} {{ form.as_p }}
+ <input type="submit" value="Update" />
+</form>
+
+
+  <script>
+
+    document.getElementById("id_project_type").addEventListener("change",supplierRequire);
+    document.getElementById("id_project_type").addEventListener("change",contractReminder);
+
+    function supplierRequire(){
+      var project_type = document.getElementById("id_project_type").value;
+      if (project_type == 'Contracting/Tendering'){
+        document.getElementById("id_supplier").required = false
+      } else {
+        document.getElementById("id_supplier").required = true
+      }
+    }
+
+    function contractReminder(){
+      var project_type = document.getElementById("id_project_type").value;
+      if (project_type == 'Contract Only'){
+        alert("If over 12 months, please add to the contracts register")}
+      else if (project_type == 'Contracting/Tendering'){
+        alert("If over 12 months, please add to the contracts register")}
+      else {
+      }
+      }
+
+
+  //onvalue change required attribute
+  </script>
+
+</body>
+{% endblock content %}

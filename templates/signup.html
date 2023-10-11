@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Activity Log{% endblock title %}
+{% block content %}
+<h3>Sign Up</h3>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" class="btn btn-success ml-2">Sign Up</button>
+</form>
+{% endblock content %}

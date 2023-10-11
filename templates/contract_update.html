@@ -1,0 +1,214 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+</head>
+
+<body>
+
+  <link href="{% static 'css/create.css' %}" rel="stylesheet">
+
+<h3>Edit Activity</h3>
+<form action="" method="post">{% csrf_token %} {{ form.as_p }}
+ <input type="submit" value="Update" />
+</form>
+
+  <script>
+
+  document.getElementById("id_extension").addEventListener("change",extensionLength);
+  document.getElementById("id_notice").addEventListener("change",noticeLength);
+  document.getElementById("id_trust").addEventListener("change",divisionOptions);
+  document.getElementById("id_WPL_category_area").addEventListener("change",subCatOptions);
+  document.getElementById("id_WPL_reference").addEventListener("change",reference);
+  document.getElementById("id_reference_number").addEventListener("change",reference);
+
+  document.getElementById("id_contract_term").min = 12
+
+  function extensionLength(){
+    var extVal = document.getElementById("id_extension").value;
+    if (extVal == 'No'){
+      document.getElementById("id_extension_months").min = 0
+      document.getElementById("id_extension_months").max = 0
+      document.getElementById("id_extension_months").value = 0
+
+    }
+    else {
+      document.getElementById("id_extension_months").min = 1
+      document.getElementById("id_extension_months").max = 10000
+      }
+  }
+
+  function noticeLength(){
+    var extVal = document.getElementById("id_notice").value;
+    if (extVal == 'No'){
+      document.getElementById("id_notice_days").min = 0
+      document.getElementById("id_notice_days").max = 0
+      document.getElementById("id_notice_days").value = 0
+    } else {
+      document.getElementById("id_notice_days").max = 10000
+      document.getElementById("id_notice_days").min = 1
+    }
+  }
+
+  function reference(){
+    var ref = document.getElementById("id_reference_number").value;
+        ref = "WPL" + ref
+        document.getElementById("id_WPL_reference").value = ref;
+  }
+
+  function divisionOptions(){
+    var x = document.getElementById("id_division");
+    var trust = document.getElementById("id_trust").value;
+
+        x.value = x[0]
+
+    for (let i = 0; i < 24; i++){
+      x[i].style.display = 'block'
+    }
+
+    if(trust == "HHFT"){
+      for (let i = 10; i < 24; i++){
+            x[i].style.display = 'none';
+          }
+      }
+    else if(trust == "UHS"){
+      for (let i = 0; i < 10; i++){
+            x[i].style.display = 'none';
+          }
+      for (let i = 20; i < 24; i++){
+            x[i].style.display = 'none';
+          }
+    }
+    else if(trust == "UEL"){
+      for (let i = 0; i < 20; i++){
+            x[i].style.display = 'none';
+          }
+      for (let i = 23; i < 24; i++){
+            x[i].style.display = 'none';
+          }
+    }
+    else if(trust == "HHCS"){
+      for (let i = 0; i < 23; i++){
+            x[i].style.display = 'none';
+          }
+    }
+  }
+
+
+  function subCatOptions(){
+    var x = document.getElementById("id_sub_category");
+    var category = document.getElementById("id_WPL_category_area").value;
+
+        x.value = x[0]
+
+    for (let i = 0; i < 63; i++){
+      x[i].style.display = 'block'
+    }
+
+    if(category == "Ward Based Consumables"){
+      for (let i = 6; i < 63; i++){
+            x[i].style.display = 'none';
+          }
+      }
+    else if(category == "Sterile Intervention Equipment and Associated Consumables"){
+      for (let i = 0; i < 6; i++){
+            x[i].style.display = 'none';
+          }
+      for (let i = 12; i < 63; i++){
+            x[i].style.display = 'none';
+          }
+    }
+    else if(category == "Infection Control and Wound Care"){
+      for (let i = 0; i < 12; i++){
+            x[i].style.display = 'none';
+          }
+      for (let i = 14; i < 63; i++){
+            x[i].style.display = 'none';
+          }
+    }
+    else if(category == "Orthopaedics, Trauma & Spine, Ophthamology"){
+      for (let i = 0; i < 14; i++){
+            x[i].style.display = 'none';
+          }
+      for (let i = 16; i < 63; i++){
+            x[i].style.display = 'none';
+          }
+    }
+    else if(category == "Rehabilitation, Disabled Services, Women\'s Health & Associated Consumables"){
+      for (let i = 0; i < 16; i++){
+            x[i].style.display = 'none';
+          }
+      for (let i = 23; i < 63; i++){
+            x[i].style.display = 'none';
+          }
+    }
+    else if(category == "Cardio-Vascular, Radiology, Specialist Medicine, Audiology & Pain Management"){
+      for (let i = 0; i < 23; i++){
+            x[i].style.display = 'none';
+          }
+      for (let i = 28; i < 63; i++){
+            x[i].style.display = 'none';
+          }
+    }else if(category == "Clinical Capital and Diagnostic Devices"){
+      for (let i = 0; i < 28; i++){
+            x[i].style.display = 'none';
+          }
+      for (let i = 33; i < 63; i++){
+            x[i].style.display = 'none';
+          }
+    }else if(category == "Office Solutions"){
+      for (let i = 0; i < 33; i++){
+            x[i].style.display = 'none';
+          }
+      for (let i = 35; i < 63; i++){
+            x[i].style.display = 'none';
+          }
+    }else if(category == "Facilities & Catering"){
+      for (let i = 0; i < 35; i++){
+            x[i].style.display = 'none';
+          }
+      for (let i = 41; i < 63; i++){
+            x[i].style.display = 'none';
+          }
+    }else if(category == "Estates"){
+      for (let i = 0; i < 41; i++){
+            x[i].style.display = 'none';
+          }
+      for (let i = 45; i < 63; i++){
+            x[i].style.display = 'none';
+          }
+    }else if(category == "Informatics"){
+      for (let i = 0; i < 45; i++){
+            x[i].style.display = 'none';
+          }
+      for (let i = 48; i < 63; i++){
+            x[i].style.display = 'none';
+          }
+    }else if(category == "Human Resources"){
+      for (let i = 0; i < 48; i++){
+            x[i].style.display = 'none';
+          }
+      for (let i = 51; i < 63; i++){
+            x[i].style.display = 'none';
+          }
+    }else if(category == "Pathology"){
+      for (let i = 0; i < 51; i++){
+            x[i].style.display = 'none';
+          }
+      for (let i = 57; i < 63; i++){
+            x[i].style.display = 'none';
+          }
+    }
+    else if(category == "Corporate"){
+      for (let i = 0; i < 57; i++){
+            x[i].style.display = 'none';
+          }
+    }
+  }
+
+</script>
+
+</body>
+{% endblock content %}
